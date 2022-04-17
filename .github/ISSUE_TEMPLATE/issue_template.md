@@ -1,5 +1,5 @@
 ---
-name: "❗️Report a Bug"
+name: "🅱️ Report a Bug"
 about: If something doesn't work as it is suppose to.
 title: ''
 labels: Priority/Normal, Type/Bug

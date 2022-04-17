@@ -1,5 +1,5 @@
 ---
-name: "?Ask a question"
+name: "🙋 Ask a question"
 about: If something needs to clarify.
 title: ''
 labels: Priority/Normal, Type/Question
