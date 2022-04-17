@@ -15,6 +15,9 @@ assignees: ''
 ### Affected Product Version:
 <!-- Members can use Affected/*** labels -->
 
+### Affected Component:
+<!-- Members can use Component/*** labels -->
+
 ### Environment details (with versions):
 - OS:
 - Client:
