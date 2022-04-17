@@ -1,5 +1,5 @@
 ---
-name: "🅱️ Report a Bug in a Released Product"
+name: "🛑 Report a Bug in a Released Product"
 about: If something doesn't work as it is supposed to in a released products (Needs to be U2 updated).
 title: ''
 labels: WUM

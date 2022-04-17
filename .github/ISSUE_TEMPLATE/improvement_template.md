@@ -1,5 +1,5 @@
 ---
-name: "✅ Improvement Request"
+name: "🟢 Improvement Request"
 about: If you saw a place we can improve.
 title: ''
 labels: Priority/Normal, Type/Improvement
