@@ -1,6 +1,6 @@
 ---
 name: "🙋 Ask a question"
-about: Ask a question about the project.
+about: Ask a question about the product suite.
 title: ''
 labels: Priority/Normal, Type/Question
 assignees: ''
