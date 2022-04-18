@@ -1,6 +1,6 @@
 ---
 name: "✅ Feature Request"
-about: Suggest new functionality and features for the project.
+about: Suggest new functionality and features for the product suite.
 title: ''
 labels: Priority/Normal, Type/New Feature
 assignees: ''
@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 ### Describe your problem
-<!-- Describe why you think this project needs this feature -->
+<!-- Describe why you think the product suite needs this feature -->
 
 ### Describe your solution
 <!-- Describe the feature -->
