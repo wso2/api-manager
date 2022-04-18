@@ -1,28 +1,28 @@
 ---
 name: "✅ Feature Request"
-about: If you need to suggest new functionality.
+about: Suggest new functionality and features for the product suite.
 title: ''
 labels: Priority/Normal, Type/New Feature
 assignees: ''
 
 ---
 
-### Describe your problem(s)
-<!-- Describe why you think this project needs this feature -->
+### Describe your problem
+<!-- Describe why you think the product suite needs this feature -->
 
 ### Describe your solution
-<!-- Describe the feature/improvement -->
+<!-- Describe the feature -->
 
 ### How will you implement it
-<!-- If you like to suggest an approach or a design -->
+<!-- Suggest an approach or a design for the feature -->
 
 ---
-### Optional Fields
-#### Related Issues:
+### Optional fields
+#### Related issues:
 <!-- Any related issues from this/other repositories-->
 
-#### Suggested Labels:
+#### Suggested labels:
 <!--Only to be used by non-members-->
 
-#### Suggested Assignees:
+#### Suggested assignees:
 <!--Only to be used by non-members-->

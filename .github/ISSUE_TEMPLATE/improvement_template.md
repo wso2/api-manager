@@ -1,6 +1,6 @@
 ---
 name: "🟢 Improvement Request"
-about: If you saw a place we can improve.
+about: Suggest an improvement to the product suite.
 title: ''
 labels: Priority/Normal, Type/Improvement
 assignees: ''
@@ -8,21 +8,21 @@ assignees: ''
 ---
 
 ### Describe your problem(s)
-<!-- Describe why you think this project needs this feature -->
+<!-- Describe why you think the product suite needs this improvement -->
 
 ### Describe your solution
-<!-- Describe the feature/improvement -->
+<!-- Describe the improvement -->
 
 ### How will you implement it
-<!-- If you like to suggest an approach or a design -->
+<!-- Suggest an approach or design for this improvement -->
 
 ---
-### Optional Fields
-#### Related Issues:
-<!-- Any related issues from this/other repositories-->
+### Optional fields
+#### Related issues:
+<!-- List any related issues from this/other repositories-->
 
-#### Suggested Labels:
+#### Suggested labels:
 <!--Only to be used by non-members-->
 
-#### Suggested Assignees:
+#### Suggested assignees:
 <!--Only to be used by non-members-->
