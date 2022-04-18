@@ -1,6 +1,6 @@
 ---
 name: "❌ Report a Bug"
-about: If something doesn't work as it is suppose to.
+about: Create an issue if something does not work as expected.
 title: ''
 labels: Priority/Normal, Type/Bug
 assignees: ''
@@ -11,11 +11,12 @@ assignees: ''
 <!-- Describe the issue -->
 
 ### Steps to reproduce:
+<!-- List the steps you followed when you encountered the issue -->
 
-### Affected Product Version:
+### Affected product version:
 <!-- Members can use Affected/*** labels -->
 
-### Affected Component:
+### Affected component:
 <!-- Members can use Component/*** labels -->
 
 ### Environment details (with versions):
@@ -24,12 +25,12 @@ assignees: ''
 - Env (Docker/K8s):
 
 ---
-### Optional Fields
-#### Related Issues:
+### Optional fields
+#### Related issues:
 <!-- Any related issues from this/other repositories-->
 
-#### Suggested Labels:
+#### Suggested labels:
 <!--Only to be used by non-members-->
 
-#### Suggested Assignees:
+#### Suggested assignees:
 <!--Only to be used by non-members-->

@@ -1,6 +1,6 @@
 ---
 name: "🙋 Ask a question"
-about: If something needs to clarify.
+about: Ask a question about the project.
 title: ''
 labels: Priority/Normal, Type/Question
 assignees: ''
@@ -10,12 +10,10 @@ assignees: ''
 ### Description:
 <!-- Describe the question -->
 
-### Steps to reproduce:
-
-### Affected Product Version:
+### Affected product version:
 <!-- Members can use Affected/*** labels -->
 
-### Affected Component:
+### Affected component:
 <!-- Members can use Component/*** labels -->
 
 ### Environment details (with versions):
@@ -24,12 +22,12 @@ assignees: ''
 - Env (Docker/K8s):
 
 ---
-### Optional Fields
-#### Related Issues:
+### Optional fields
+#### Related issues:
 <!-- Any related issues from this/other repositories-->
 
-#### Suggested Labels:
+#### Suggested labels:
 <!--Only to be used by non-members-->
 
-#### Suggested Assignees:
+#### Suggested assignees:
 <!--Only to be used by non-members-->
