@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
 - name: '📚 Documentation Issue'
-  about: Report an issue if something is missing or not working in the official documentation.
+  about: Report an issue if something is missing or incorrect in the official documentation.
   url: https://github.com/wso2/docs-apim/issues/new/choose
 - name: '💬 Slack Channel'
   url: 'https://apim-slack.wso2.com/'
