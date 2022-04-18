@@ -1,6 +1,6 @@
 ---
 name: "🟢 Improvement Request"
-about: Suggest an improvement to the project.
+about: Suggest an improvement to the product suite.
 title: ''
 labels: Priority/Normal, Type/Improvement
 assignees: ''
@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 ### Describe your problem(s)
-<!-- Describe why you think this project needs this improvement -->
+<!-- Describe why you think the product suite needs this improvement -->
 
 ### Describe your solution
 <!-- Describe the improvement -->
