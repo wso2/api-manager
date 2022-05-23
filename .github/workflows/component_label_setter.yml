@@ -1,0 +1,24 @@
+on:
+  issues:
+    types: [opened]
+jobs:
+  set-affected-component-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: execute python script
+        run: |
+          python -m pip install requests
+          labels=`python .github/workflows/label_checker.py`
+          gh issue edit $ISSUE --add-label $labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.html_url }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
