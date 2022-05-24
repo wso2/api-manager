@@ -1,4 +1,4 @@
-name: "❌ Report a Bug"
+name: "🐞 Report a Bug"
 description: Create an issue if something does not work as expected.
 labels: ["Priority/Normal", "Type/Bug"]
 body:
@@ -16,14 +16,26 @@ body:
       description: List the steps you followed when you encountered the issue. If none, type N/A.
     validations:
       required: true
-  - type: input
-    id: affected
+  - type: dropdown
+    id: component
     attributes:
       label: Affected Component
-      description: |
-        Enter affected component and version in {component}-{version} format. For ex:- APIM-4.0.0. 
-        You can add multiple components each separated by a comma. For ex:- APIM-4.0.0,APICTL-4.0.0.
-        List of components = [Analytics, APIM, APICTL, IntegrationStudio, MI, MIDashboard, SI]
+      description: Select affected component.
+      options:
+        - Analytics
+        - APICTL
+        - APIM
+        - IntegrationStudio
+        - MI
+        - MIDashboard
+        - SI
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Enter component version.
     validations:
       required: true
   - type: textarea
@@ -46,5 +58,12 @@ body:
     attributes:
       label: Related Issues
       description: Mention if any related issues.
+    validations:
+      required: false
+  - type: input
+    id: suggested
+    attributes:
+      label: Suggested Labels
+      description: Mention if any suggested labels.
     validations:
       required: false
