@@ -1,12 +1,12 @@
-name: "🙋 Ask a Question"
-description: Ask a question about the product suite.
-labels: ["Priority/Normal", "Type/Question"]
+name: "✍️ Create a Task"
+description: Create a new task.
+labels: ["Priority/Normal", "Type/Task"]
 body:
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: Describe the question.
+      description: A clear description of what needs to be done.
     validations:
       required: true
   - type: dropdown
@@ -23,21 +23,14 @@ body:
         - MIDashboard
         - SI
     validations:
-      required: true
+      required: false
   - type: input
     id: version
     attributes:
       label: Version
       description: Enter component version.
     validations:
-      required: true
-  - type: textarea
-    id: environment
-    attributes:
-      label: Environment Details (with versions)
-      description: Mention the environment details (OS, Client, etc.) that the product is running on.
-    validations:
-      required: true
+      required: false
   - type: textarea
     id: related
     attributes:
