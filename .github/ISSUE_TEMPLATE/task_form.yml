@@ -1,4 +1,4 @@
-name: "✍ Create a Task"
+name: "✍️ Create a Task"
 description: Create a new task.
 labels: ["Priority/Normal", "Type/Task"]
 body:
@@ -9,13 +9,6 @@ body:
       description: A clear description of what needs to be done.
     validations:
       required: true
-  - type: textarea
-    id: implementation
-    attributes:
-      label: Implementation
-      description: Suggest an approach or a design of how the task can be done.
-    validations:
-      required: false
   - type: dropdown
     id: component
     attributes:
