@@ -16,7 +16,7 @@ jobs:
       contains(github.event.issue.labels.*.name, 'Resolution/Not a bug') ||
       contains(github.event.issue.labels.*.name, 'Resolution/Postponed') ||
       contains(github.event.issue.labels.*.name, 'Resolution/Won’t Fix') ||
-      contains(github.event.issue.labels.*.name, 'Resolution/Done) ||
+      contains(github.event.issue.labels.*.name, 'Resolution/Done)
       )}}
     steps:
       - run: gh issue comment $ISSUE --body "This issue is **NOT** closed with a proper **Resolution/** label. Make sure to add proper reason label before closing. Please add or leave a comment with the proper reason label now.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Cannot Reproduce** - Issue cannot be reproduced.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Duplicate** - Issue is already reported before.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Fixed** - Issue has already been fixed.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Answered** - Issue has already been answered.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Invalid** - Issue is invalid.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Not a bug** - Issue is not a bug.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Postponed** - Issue is postponed.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **Resolution/Won’t Fix** - Issue won't be fixed."
