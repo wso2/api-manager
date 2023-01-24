@@ -1,6 +1,6 @@
 name: "🐞 Report a Bug"
 description: Create an issue if something does not work as expected.
-labels: ["Priority/Normal", "Type/Bug"]
+labels: ["Type/Bug"]
 body:
   - type: textarea
     id: description

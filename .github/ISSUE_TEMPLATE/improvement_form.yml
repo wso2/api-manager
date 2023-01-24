@@ -1,6 +1,6 @@
 name: "🚀 Improvement Request"
 description: Suggest an improvement to the product suite.
-labels: ["Priority/Normal", "Type/Improvement"]
+labels: ["Type/Improvement"]
 body:
   - type: textarea
     id: problem

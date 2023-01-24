@@ -1,6 +1,6 @@
 name: "💡 Feature Request"
 description: Suggest new functionality and features for the product suite.
-labels: ["Priority/Normal", "Type/New Feature"]
+labels: ["Type/New Feature"]
 body:
   - type: textarea
     id: problem
