@@ -1,6 +1,6 @@
 name: "🙋 Ask a Question"
 description: Ask a question about the product suite.
-labels: ["Priority/Normal", "Type/Question"]
+labels: ["Type/Question"]
 body:
   - type: textarea
     id: description
