@@ -1,9 +1,12 @@
 blank_issues_enabled: false
 contact_links:
 - name: '📚 Documentation Issue'
-  about: Report an issue if something is missing or incorrect in the official documentation.
+  about: Request a new article, missing topic, or report an issue if a topic is incorrect in the current documentation.
   url: https://github.com/wso2/docs-apim/issues/new/choose
-- name: '💬 Slack Channel'
-  url: 'https://apim-slack.wso2.com/'
-  about: |
+- name: 'General Question'
+  url: https://stackoverflow.com/questions/tagged/wso2-api-manager
+  about: "If you have a question then please ask on Stack Overflow using the #wso2-api-manager tag."
     Chat with the community to get quick clarifications for your questions.
+- name: Chat on help-api-manager Discord Channel
+  url: https://discord.com/invite/Xa5VubmThw
+  about: "Chat about anything else with the community."
