@@ -1,0 +1,123 @@
+name: Auto-add Issues to Project on Label
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  add-to-project:
+    if: github.event.label.name == '4.6.0-BugFixingEffort'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      contents: read
+      repository-projects: write
+    
+    steps:
+      - name: Add issue to project
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          PROJECT_URL: https://github.com/orgs/wso2/projects/102
+        run: |
+          echo "Issue #${{ github.event.issue.number }} was labeled with '4.6.0-BugFixingEffort'"
+          echo "Adding to project: $PROJECT_URL"
+          
+          # Check if we have a valid token
+          if [ -z "$GITHUB_TOKEN" ]; then
+            echo "Error: No GitHub token available. Please set GITHUB_TOKEN secret with project permissions."
+            exit 1
+          fi
+          
+          # Get the project ID
+          echo "Fetching project information..."
+          PROJECT_DATA=$(gh api graphql -f query='
+            query($owner: String!) {
+              user(login: $owner) {
+                projectsV2(first: 10) {
+                  nodes {
+                    id
+                    number
+                    title
+                  }
+                }
+              }
+            }' -f owner="wso2" --jq '.data.user.projectsV2.nodes' 2>&1)
+          
+          # Check for API errors
+          if echo "$PROJECT_DATA" | grep -q "error\|Error"; then
+            echo "API Error occurred:"
+            echo "$PROJECT_DATA"
+            echo ""
+            echo "This usually means:"
+            echo "1. The PROJECT_TOKEN secret is missing or invalid"
+            echo "2. The token doesn't have 'Projects: Read and write' permissions"
+            echo "3. The project is private and the token can't access it"
+            exit 1
+          fi
+          
+          PROJECT_ID=$(echo "$PROJECT_DATA" | jq -r '.[] | select(.number == 1) | .id')
+          
+          if [ -z "$PROJECT_ID" ] || [ "$PROJECT_ID" = "null" ]; then
+            echo "Error: Could not find project with number 1"
+            echo "Available projects:"
+            if echo "$PROJECT_DATA" | jq -e '. | length' > /dev/null 2>&1; then
+              echo "$PROJECT_DATA" | jq -r '.[] | "- Project #\(.number): \(.title) (ID: \(.id))"'
+            else
+              echo "No projects found or permission denied"
+            fi
+            exit 1
+          fi
+          
+          echo "Found project ID: $PROJECT_ID"
+          
+          # Get the issue's global node ID
+          ISSUE_ID="${{ github.event.issue.node_id }}"
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          
+          echo "Processing issue #$ISSUE_NUMBER (ID: $ISSUE_ID)"
+          
+          # Check if the issue is already in the project
+          echo "Checking if issue is already in project..."
+          EXISTING_ITEM=$(gh api graphql -f query='
+            query($projectId: ID!) {
+              node(id: $projectId) {
+                ... on ProjectV2 {
+                  items(first: 100) {
+                    nodes {
+                      id
+                      content {
+                        ... on Issue {
+                          id
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }' -f projectId="$PROJECT_ID" --jq '.data.node.items.nodes[] | select(.content.id == "'$ISSUE_ID'") | .id')
+          
+          if [ -n "$EXISTING_ITEM" ]; then
+            echo "✅ Issue #$ISSUE_NUMBER is already in the project (item ID: $EXISTING_ITEM)"
+            echo "No action needed."
+          else
+            echo "Adding issue #$ISSUE_NUMBER to project..."
+            
+            # Add the issue to the project
+            ITEM_ID=$(gh api graphql -f query='
+              mutation($projectId: ID!, $contentId: ID!) {
+                addProjectV2ItemById(input: {projectId: $projectId, contentId: $contentId}) {
+                  item {
+                    id
+                  }
+                }
+              }' -f projectId="$PROJECT_ID" -f contentId="$ISSUE_ID" --jq '.data.addProjectV2ItemById.item.id')
+            
+            if [ -n "$ITEM_ID" ] && [ "$ITEM_ID" != "null" ]; then
+              echo "✅ Successfully added issue #$ISSUE_NUMBER to project (item ID: $ITEM_ID)"
+            else
+              echo "❌ Failed to add issue #$ISSUE_NUMBER to project"
+              exit 1
+            fi
+          fi
+          
+          echo "Completed processing issue #$ISSUE_NUMBER"
