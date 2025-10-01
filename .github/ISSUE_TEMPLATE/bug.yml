@@ -1,5 +1,5 @@
 name: "🐞 Report a Bug"
-description: Create an issue if something does not work as expected.
+description: Report an issue if something does not work as expected.
 labels: ["Type/Bug"]
 body:
   - type: textarea
