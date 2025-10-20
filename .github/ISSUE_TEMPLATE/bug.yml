@@ -1,3 +1,4 @@
+
 name: "🐞 Report a Bug"
 description: Create an issue if something does not work as expected.
 labels: ["Type/Bug"]
@@ -8,11 +9,14 @@ body:
       label: Description
       description: Please share a clear and concise description of the problem.
       placeholder: Description
+    validations:
+      required: true
   - type: textarea
     id: steps
     attributes:
       label: Steps to Reproduce
       description: List the steps you followed when you encountered the issue. Provide sample source code to reproduce the issue where applicable.
+      placeholder: Steps to reproduce
     validations:
       required: true
   - type: input
@@ -20,6 +24,7 @@ body:
     attributes:
       label: Version
       description: Enter product/component version.
+      placeholder: e.g. 1.0.0
     validations:
       required: true
   - type: textarea
@@ -27,5 +32,6 @@ body:
     attributes:
       label: Environment Details (with versions)
       description: Mention the environment details (OS, Client, etc.) that the product is running on.
+      placeholder: e.g. Windows 10, Chrome 95, etc.
     validations:
       required: false
