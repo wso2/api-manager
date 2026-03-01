@@ -1,5 +1,6 @@
 import os
 import requests
+import sys
 
 # Get all existing labels in the repository
 labels = []
@@ -11,22 +12,48 @@ if response.status_code == 200:
 else:
     exit(0)
 
-# Get affected component
-i = os.environ["ISSUE_BODY"].index("### Affected Component")
-j = os.environ["ISSUE_BODY"].index("### Version")
-component = os.environ["ISSUE_BODY"][i+23:j].strip()
-component_label = "Component/" + component
-if component_label in all_existing_labels:
-    labels.append(component_label)
-
-# Get component version
-version = os.environ["ISSUE_BODY"][j+13:j+18].strip()
-affected_label = "Affected/" + component + "-" + version
-if affected_label in all_existing_labels:
-    labels.append(affected_label)
-
-# Return verified labels
-if len(labels) > 0:
-    print(",".join(labels))
-else:
+try:
+    # Check if ISSUE_BODY environment variable exists
+    issue_body = os.environ.get("ISSUE_BODY", "")
+    if not issue_body:
+        print("Missing/Component")
+        sys.exit(0)
+    
+    # Get affected component
+    if "### Affected Component" not in issue_body or "### Version" not in issue_body:
+        print("Missing/Component")
+        sys.exit(0)
+    
+    i = issue_body.index("### Affected Component")
+    j = issue_body.index("### Version")
+    component = issue_body[i+25:j].strip()
+    component_label = "Component/" + component
+    if component_label in all_existing_labels:
+        labels.append(component_label)
+    
+    # Get component version - extract until next newline or end of string
+    version_start = j + 13
+    version_text = issue_body[version_start:].strip()
+    # Extract version until newline or '###' (next section)
+    version_end = len(version_text)
+    for idx, char in enumerate(version_text):
+        if char in ['\n', '\r'] or version_text[idx:idx+3] == '###':
+            version_end = idx
+            break
+    version = version_text[:version_end].strip()
+    
+    if version:
+        affected_label = "Affected/" + component + "-" + version
+        if affected_label in all_existing_labels:
+            labels.append(affected_label)
+    
+    # Return verified labels
+    if len(labels) > 0:
+        print(",".join(labels))
+    else:
+        print("Missing/Component")
+        
+except Exception as e:
+    # If any error occurs, default to Missing/Component label
     print("Missing/Component")
+    sys.exit(0)
