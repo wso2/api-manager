@@ -12,18 +12,28 @@ else:
     exit(0)
 
 # Get affected component
-i = os.environ["ISSUE_BODY"].index("### Affected Component")
-j = os.environ["ISSUE_BODY"].index("### Version")
-component = os.environ["ISSUE_BODY"][i+23:j].strip()
-component_label = "Component/" + component
-if component_label in all_existing_labels:
-    labels.append(component_label)
+component = None
+i = os.environ["ISSUE_BODY"].find("### Affected Component")
+j = os.environ["ISSUE_BODY"].find("### Version")
+
+if i != -1 and j != -1 and j > i:
+    component = os.environ["ISSUE_BODY"][i+23:j].strip()
+    component_label = "Component/" + component
+    if component_label in all_existing_labels:
+        labels.append(component_label)
 
 # Get component version
-version = os.environ["ISSUE_BODY"][j+13:j+18].strip()
-affected_label = "Affected/" + component + "-" + version
-if affected_label in all_existing_labels:
-    labels.append(affected_label)
+if j != -1:
+    k = os.environ["ISSUE_BODY"].find("###", j + 11)
+    if k != -1:
+        version = os.environ["ISSUE_BODY"][j+11:k].strip()
+    else:
+        version = os.environ["ISSUE_BODY"][j+11:].strip()
+        
+    if component is not None:
+        affected_label = "Affected/" + component + "-" + version
+        if affected_label in all_existing_labels:
+            labels.append(affected_label)
 
 # Return verified labels
 if len(labels) > 0:
