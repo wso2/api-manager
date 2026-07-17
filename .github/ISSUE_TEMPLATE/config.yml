@@ -5,8 +5,8 @@ contact_links:
   url: https://github.com/wso2/docs-apim/issues/new/choose
 - name: 'General Question'
   url: https://stackoverflow.com/questions/tagged/wso2-api-manager
-  about: "If you have a question then please ask on Stack Overflow using the #wso2-api-manager tag."
-    Chat with the community to get quick clarifications for your questions.
+  about: "If you have a question then please ask on Stack Overflow using the #wso2-api-manager tag.
+    Chat with the community to get quick clarifications for your questions." #fixed the bug here. This line was not inside the ""
 - name: Chat on help-api-manager Discord Channel
   url: https://discord.com/invite/Xa5VubmThw
   about: "Chat about anything else with the community."
