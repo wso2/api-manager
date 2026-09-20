@@ -12,15 +12,22 @@ else:
     exit(0)
 
 # Get affected component
-i = os.environ["ISSUE_BODY"].index("### Affected Component")
-j = os.environ["ISSUE_BODY"].index("### Version")
-component = os.environ["ISSUE_BODY"][i+23:j].strip()
+# Using try-except to handle unexpected errors which may cause crashes if left unhandled.
+try:
+    i = os.environ["ISSUE_BODY"].index("### Affected Component")
+    j = os.environ["ISSUE_BODY"].index("### Version")
+except ValueError:
+    print("Missing/Component")
+    exit(0)
+
+#the count of characters was wrong changed it to 24
+component = os.environ["ISSUE_BODY"][i+24:j].strip()
 component_label = "Component/" + component
 if component_label in all_existing_labels:
     labels.append(component_label)
 
 # Get component version
-version = os.environ["ISSUE_BODY"][j+13:j+18].strip()
+version = os.environ["ISSUE_BODY"][j+13:].split('\n')[0].strip()
 affected_label = "Affected/" + component + "-" + version
 if affected_label in all_existing_labels:
     labels.append(affected_label)
