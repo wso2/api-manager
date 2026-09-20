@@ -27,7 +27,7 @@ if component_label in all_existing_labels:
     labels.append(component_label)
 
 # Get component version
-version = os.environ["ISSUE_BODY"][j+12:].split('\n')[0].strip()
+version = os.environ["ISSUE_BODY"][j+13:].split('\n')[0].strip()
 affected_label = "Affected/" + component + "-" + version
 if affected_label in all_existing_labels:
     labels.append(affected_label)
